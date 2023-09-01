@@ -7,22 +7,30 @@
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
     <body>   
-        <div class="container m-2">
+        <div class="container m-3">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="card">
-                    <div class="w-100 mt-2 mr-5">  
-                            <a href="{{ route('create') }}" class="btn btn-success" style="float:right">+</a>
-                        </div> 
-                            <h5 class="card-header">Laravel</h5>
-                            
+                  
+
+                  
+                        <div class="w-100 mt-2 mr-5 card-header">  
+                            <h5  style="float:left">Laravel</h5>
+                            <a href="{{ route('create') }}" class="btn btn-success" style="float:right">
+                            <b>+</b>
+                        </a>
+                        </div>
+
+
                             <div class="card-body">
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">summary</th>
+                                    <th>Id</th>
+                                    <th></th>
+                                    <th>Title</th>
+                                    <th></th>
+                                    <th>summary</th>
                                     </tr>
                                     </thead>
                                     <tbody>

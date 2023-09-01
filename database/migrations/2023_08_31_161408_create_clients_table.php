@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('userId');
             $table->string('title');
-            $table->string('body');
+            $table->string('summary');
         }); 
     }
 

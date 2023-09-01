@@ -11,31 +11,7 @@ use Exception;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-    
-      $clients = Http::get('https://jsonplaceholder.typicode.com/posts');
-      //alimento modelo con los datos del JSON
-      $clients = $clients->object();
-      
-      //Alimento modelo con los datos del JSON
-      //Control de llenadp
-      if (clients::all()->isEmpty()) {
-        foreach ($clients as  $cli) {
-          $clients = new Clients;
-          $clients->id = $cli->id;
-          $clients->title = $cli->title;
-          $clients->body = $cli->body;
-          $clients->userId = $cli->userId;
-          $clients->save();
-        }
-      }
-   
-      $cli=DB::table('clients')->paginate(5);
-      //Devuelvo el modelo paginao
-      return view("index", ['leads' => $cli]);
-    }
-  
+
   
   
     public function create(){
@@ -71,13 +47,27 @@ class UserController extends Controller
       {
         try {
             
-          $clients = Http::get('https://jsonplaceholder.typicode.com/posts');
-            // $articles = Article::orderBy('updated_at', $order)
-            //     ->select('id', 'title', 'content', 'status')
-            //     ->where('status', 'Published')
-            //     ->paginate($limit);
-  
-            return response()->json(['status' => 200, 'data' => $clients]);
+            $clients = Http::get('https://jsonplaceholder.typicode.com/posts');
+            //alimento modelo con los datos del JSON
+            $clients = $clients->object();
+            
+            //Alimento modelo con los datos del JSON
+            //Control de llenadp
+            if (clients::all()->isEmpty()) {
+              foreach ($clients as  $cli) {
+                $clients = new Clients;
+                $clients->id = $cli->id;
+                $clients->title = $cli->title;
+                $clients->body = $cli->summary;
+                $clients->userId = $cli->userId;
+                $clients->save();
+              }
+            }
+         
+            $cli=DB::table('clients')->paginate(5);
+            //Devuelvo el modelo paginao
+            return view("index", ['leads' => $cli]);
+           // return response()->json(['status' => 200, 'data' => $clients]);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'message' => $e->getMessage()]);
         }
@@ -115,8 +105,10 @@ class UserController extends Controller
       public function store(Request $request)
       {
           try {
-              $client = Clients::create($request->only('id', 'userId', 'title','body')); 
-              return response()->json(['status' => 201, 'data' => $client]);
+             // This commented code records what was received from the post sending in the database.
+              //$client = Clients::create($request->only('id', 'userId', 'title','summary')); 
+              //return response()->json(['status' => 201,'data' => $client]);
+              return response()->json(['status' => 201]);
           } catch (Exception $e) {
               DB::rollBack();
               return response()->json(['status' => 400, 'message' => $e->getMessage()]);

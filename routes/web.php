@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [UserController::class, 'index']);
-Route::get('/create', [UserController::class, 'create']);
+//Route::get('/', [UserController::class, 'index']);
+Route::get('/create', [UserController::class, 'create'])->name('create');
