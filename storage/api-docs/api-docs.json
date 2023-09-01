@@ -1,0 +1,52 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/": {
+            "get": {
+                "summary": "Obtener datos de ejemplo",
+                "description": "Esta llamada obtiene datos de ejemplo de la API.",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    }
+                }
+            }
+        },
+
+        "/api/create/": {
+            "post": {
+                "summary": "Crear un recurso",
+                "description": "Esta llamada obtiene datos de ejemplo de la API.",
+                "requestBody": {
+                    "description": "Cuerpo de la solicitud",
+                    "required": true,
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "/api/create/"
+                        }
+                      }
+                    }
+                },
+                "responses": {
+                    "201": {
+                      "description": "Recurso creado exitosamente",
+                      "content": {
+                        "application/json": {
+                          "client": {
+                            "clientId":1,
+                            "title": "ytghvjhsgsa ksjha",
+                            "summary":"jkguystdjksghdjksh ksjdyhsikhydisouydosjiudosjhdkn iusdysiuydsiouud"
+                          }
+                        }
+                      }
+                    }
+            }
+        }        
+        }
+    }
+}
