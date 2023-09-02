@@ -19,6 +19,6 @@ class Clients extends Model
         'id',
         'userId',
         'title', 
-        'body',
+        'summary',
     ];
 }
