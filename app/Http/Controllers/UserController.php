@@ -49,7 +49,7 @@ class UserController extends Controller
   {
     try {
       // This commented code records what was received from the post sending in the database.
-      //$client = Clients::create($request->only('id', 'userId', 'title','summary')); 
+      //$client = Clients::create($request->only('id', 'userId', 'title','summary'));
       //return response()->json(['status' => 201,'data' => $client]);
       return response()->json(['status' => 200]);
     } catch (Exception $e) {
